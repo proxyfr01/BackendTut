@@ -17,10 +17,20 @@ const videoSchema= new Schema (
 
         },
 
+        content : {
+            require: true,
+            type :"video",
+            
+        },
+
         owner : {
             type : Schema.Types.ObjectId,
             ref :"User"
+
+
         }
+
+
 
     }
    
