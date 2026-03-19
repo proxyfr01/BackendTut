@@ -1,5 +1,5 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-
+import { Apierrors } from "../utils/APIerrors.js";
 const registerUser = asyncHandler(async (req, res) => {
     //let us have a look at the steps whuch we are going to take as whole 
     //Get user detail from frontnend

@@ -23,3 +23,4 @@ class Apierrors extends Error {
 
     
 }
+export {Apierrors}
