@@ -6,7 +6,7 @@ import bcrypt from "bcrypt"
 const userSchema = new Schema (
     {
         username: {
-            type:"string",
+            type: string,
             require: true,
             unique: true,
             lowercase: true,
@@ -15,7 +15,7 @@ const userSchema = new Schema (
         },
 
         email : {
-            type:"string",
+            type: string,
             unique: true,
             require: true,
             lowercase: true
@@ -23,13 +23,26 @@ const userSchema = new Schema (
 
         },
 
+        avatar : {
+            type : String,
+            require : true
+        },
+
+        fullName : {
+            type : String,
+            required:true,
+            trim: true,
+            index : true
+        }
+
+
     }
 )
 //we are designing the hooks here in orde to mainupulate the password ,
 //that whether it should be decrypted or not or when it should be encrypted
 userSchema.pre("save",  async function (next) {
     if( ! this.isModified("password")) return next();
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 
